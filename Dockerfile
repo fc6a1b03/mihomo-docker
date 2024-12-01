@@ -1,4 +1,5 @@
 FROM scratch
+COPY --from=alpine:latest /bin/sh /bin/sh
 COPY mihomo .
 ARG TZ=Asia/Shanghai
 RUN ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezone
