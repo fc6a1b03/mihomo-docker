@@ -31,7 +31,6 @@ jobs:
           LATEST_VERSION=$(curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest | jq -r '.tag_name')
           curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest | jq -r '.assets[] | select(.name | test("^mihomo-linux-amd64-v.*gz$")) | .browser_download_url' | xargs -I {} wget {}
           gzip -d *.gz && mv mihomo-* mihomo
-          ls -lh
           echo "LATEST_VERSION=$LATEST_VERSION" >> $GITHUB_ENV
 
       - name: Build 和 push Docker image
