@@ -40,5 +40,5 @@ jobs:
           context: .
           tags: |
             ${{ env.REGISTRY }}/${{ github.repository }}:latest
-            ${{ env.REGISTRY }}/${{ github.repository }}:${{ LATEST_VERSION }}
+            ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.LATEST_VERSION }}
           platforms: linux/amd64
