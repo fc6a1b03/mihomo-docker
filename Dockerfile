@@ -8,7 +8,6 @@ RUN chmod +x mihomo
 # ============================================================
 
 FROM scratch
-COPY mihomo .
 COPY --from=builder /opt/mihomo mihomo
 COPY --from=builder /usr/share/zoneinfo/Asia/Shanghai /usr/share/zoneinfo/Asia/Shanghai
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo Asia/Shanghai > /etc/timezone
