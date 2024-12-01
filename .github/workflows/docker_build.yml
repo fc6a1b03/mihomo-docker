@@ -25,12 +25,13 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
+    
       - name: Get latest mihomo
         run: |
-          LATEST_VERSION=$(curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest | jq -r '.tag_name')
-          curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest | jq -r '.assets[] | select(.name | test("^mihomo-linux-amd64-v.*gz$")) | .browser_download_url' | xargs -I {} wget {}
-          gzip -d *.gz && mv mihomo-* mihomo
+          API_RESPONSE=$(curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest)
+          LATEST_VERSION=$(echo "$API_RESPONSE" | jq -r '.tag_name')
+          echo "$API_RESPONSE" | jq -r '.assets[] | select(.name | test("^mihomo-linux-amd64-v.*gz$")) | .browser_download_url' | xargs wget -O mihomo.gz &&
+          gzip -d mihomo.gz && mv mihomo-* mihomo
           echo "LATEST_VERSION=$LATEST_VERSION" >> $GITHUB_ENV
 
       - name: Build 和 push Docker image
