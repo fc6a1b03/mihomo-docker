@@ -1,4 +1,4 @@
-FROM scratch
+FROM alpine
 RUN mkdir -p /opt/mihomo/data
 WORKDIR /opt/mihomo
 COPY mihomo .
