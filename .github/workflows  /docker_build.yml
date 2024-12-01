@@ -1,4 +1,4 @@
-name: GeoCN Docker Image CI
+name: Mihomo Docker Image CI
 
 on:
   workflow_dispatch:
