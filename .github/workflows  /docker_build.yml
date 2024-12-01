@@ -1,11 +1,6 @@
 name: GeoCN Docker Image CI
 
 on:
-  push:
-    branches:
-      - main
-  schedule:
-    - cron: '0 2 15 * *'
   workflow_dispatch:
 
 jobs:
