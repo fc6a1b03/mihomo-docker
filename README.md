@@ -7,7 +7,7 @@
 - 端口
   - RESTful`9090`
   - PROXY`7890`
-- use
+- 使用
   ```bash
     export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
     export http_proxy="http://127.0.0.1:7890"
