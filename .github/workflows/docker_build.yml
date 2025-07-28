@@ -27,7 +27,7 @@ jobs:
         run: |
           LATEST_RELEASE=$(curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest)
           LATEST_VERSION=$(echo "$LATEST_RELEASE" | jq -r '.tag_name')
-          DOWNLOAD_URL=$(echo "$LATEST_RELEASE" | jq -r '.assets[] | select(.name | test("^mihomo-linux-amd64-v3.*\\.gz$")) | .browser_download_url')
+          DOWNLOAD_URL=$(echo "$LATEST_RELEASE" | jq -r '.assets[] | select(.name | test("^mihomo-linux-amd64-v3-v.*\\.gz$")) | .browser_download_url')
           wget -q "$DOWNLOAD_URL" && gunzip $(basename "$DOWNLOAD_URL") && mv mihomo-* mihomo && chmod +x mihomo
           ls -lha
           echo "LATEST_VERSION=$LATEST_VERSION" >> $GITHUB_ENV
